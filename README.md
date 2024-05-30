@@ -118,3 +118,6 @@ Converting to Aligned Fasta Format - Convert the CLUSTAL alignments to aligned F
 Cleaning AFA Files - Clean the AFA files to have simpler headers, making the data compatible with other software.
 Extracting Reference Species Sequences from Shuffled Alignments - Extract the shuffled sequences of the reference species from the shuffled alignments.
 Creating Sequence Lists - Create lists of sequences for each type (Exons, OffNeg, OffPos, Shuf).
+
+
+.... more info on it's way
