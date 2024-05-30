@@ -1,0 +1,9 @@
+Criteria,Cnt,Perc
+infrequentlyUsed,0,0.0
+usesHomology,1,2.8
+noCodingPot.,1,2.8
+notUnique,3,8.3
+inaccessible,7,19.4
+speciesSpecific,9,25
+uninstallable,11,30.6
+included,9,25
