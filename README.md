@@ -11,7 +11,7 @@ For use on Linux.
 
 To access the project, create a local project directory. For example:
 ```
-mkdir PCPCFull
+mkdir PCPBFull
 ```
 Clone this repository to the project directory.
 ```
@@ -27,20 +27,21 @@ A lot of dependencies have already been set in the conda environemnt YML file.
 
 First, you will need to download and install conda if you do not already have it. See here: https://docs.anaconda.com/free/miniconda/miniconda-install/
 
-Next, reate a new conda environment using the YML file loated in the scripts directory.
+Next, create a new conda environment using the YML file loated in the scripts directory.
 ```
-conda env create -f scripts/support/condaEnv.yml
+conda env create -f scripts/support/pcpc.yml
 ```
 
 Some software was unavailable for adding to the conda environment and will need to be installed manually. These are:
-(list of software needing manual install to be inserted here)
+rnasamba (could not solve, and had to be installed in a separate conda environment)
 
 
 ## How to use this pipeline
 
 When running a script, always run from the project base directory. 
+e.g.
 ```
-scripts/main/D01-runRNAcode.sh
+scripts/main/A00-initialise.sh
 ```
 
 Start with the scripts in alphabetical and numerical order.
@@ -90,7 +91,7 @@ Compilation of All Sampled BEDs - Finally, the script concatenates the sampled e
 
 ### B02-cleanNegatives
 
-
+Runs mmseq to compare reference genomes protein db from Uniprot and the negative set. This will remove any negative sequences that are likely to be protein coding.
 
 ### B03-runMmseq
 Database and Query Preparation - The script starts by checking if the target MMSEQS2 database exists. If not, it terminates the script. It also checks if the query database exists; if not, it builds it using esl-sfetch and mmseqs.
@@ -120,4 +121,21 @@ Extracting Reference Species Sequences from Shuffled Alignments - Extract the sh
 Creating Sequence Lists - Create lists of sequences for each type (Exons, OffNeg, OffPos, Shuf).
 
 
-.... more info on it's way
+### C03-createTree
+Creates phylogenic trees that are required for benchmarking PhyloCSF.
+These need to be opened in a tree viewer such as FigTree, edited to make sure it is bifuricating, then exported and then place in the PhyloCSF_Parameters folder. Also, the newick file cannot use scientific notation, must be decimal, so open the exported file and edit if necessary.
+
+### C04-preBenchmark
+Creates a file of nucleotide sizes and GC content for use in timing and summary.
+
+### C05-depthAndId
+Creates a file of alignment depth and percent id.
+
+### D01 to D11
+Runs the specified software on the previously created sequences and alignments.
+
+### T01 to T11
+Timed runs for the specified software. Create a smaller set for timing (by running B and C scripts again with different parameters), rather than running the full set of sequences and alignments created previously.
+
+### R01 to R99
+R scripts for interpreting results.
