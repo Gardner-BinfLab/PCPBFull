@@ -59,7 +59,7 @@ process_clade_results <- function(tool_results, clade) {
 
 # Function to create ROC data frame per clade
 create_roc_data <- function(clade_results, software, clade) {
-  if(software == "CPPred"){
+  if(software == "None"){
     roc_object <- roc(direction = ">", clade_results$TrueLabels, clade_results$Score)
   }else{
     roc_object <- roc(direction = "<", clade_results$TrueLabels, clade_results$Score)
@@ -76,7 +76,7 @@ create_roc_data <- function(clade_results, software, clade) {
 
 # Function to create ROC data frame per software
 create_tool_roc_data <- function(combined_tool_results, software) {
-  if(software == "CPPred"){
+  if(software == "None"){
     roc_object <- roc(direction = ">", combined_tool_results$TrueLabels, combined_tool_results$Score)
   }else{
     roc_object <- roc(direction = "<", combined_tool_results$TrueLabels, combined_tool_results$Score)

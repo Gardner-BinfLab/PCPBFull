@@ -62,8 +62,8 @@ for(software in software_3frame){
     best_scores_df <- software_combined_df %>%
       group_by(Name) %>%
       mutate(RowNum = row_number()) %>%  # Assign a unique row number within each group
-      filter(if(software == "CPPred") {
-        Score == min(Score)  # For CPPred, select rows with the minimum score
+      filter(if(software == "None") {
+        Score == min(Score)  # For None, select rows with the minimum score
       } else {
         Score == max(Score)  # For other software, select rows with the maximum score
       }) %>%

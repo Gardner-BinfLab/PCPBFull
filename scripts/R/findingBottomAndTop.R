@@ -45,10 +45,6 @@ for (software in names(normScore_list_adj)) {
   normScore_adj <- full_join(normScore_adj, software_df, by = c("Name", "Clade", "Length"))
 }
 
-
-# inverse CPPred, since it's backwards scoring
-normScore_adj$CPPred <- normScore_adj$CPPred * -1
-
 # Add a combined 'normScore' field that contains the sum of all 'normScores' for each sample 'Name'
 normScore_adj <- normScore_adj %>%
   rowwise() %>%

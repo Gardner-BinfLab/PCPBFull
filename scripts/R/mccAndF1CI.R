@@ -40,7 +40,7 @@ for (software in software_names) {
   
   for (clade in clade_names) {
     threshold <- roc_metrics_list[[software]][[clade]]$threshold
-      if(software == "CPPred"){
+      if(software == "None"){
         combined_tool_results_list[[software]][[clade]] <- add_confusion_matrix_calls_inv(combined_tool_results_list[[software]][[clade]], threshold)
       }else{
         combined_tool_results_list[[software]][[clade]] <- add_confusion_matrix_calls(combined_tool_results_list[[software]][[clade]], threshold)
@@ -53,7 +53,7 @@ for (software in software_names) {
   
   for (clade in clade_names) {
     threshold <- combined_roc_metrics_list[[software]]$Threshold
-    if(software == "CPPred"){
+    if(software == "None"){
         combined_tool_results_list[[software]][[clade]] <- add_confusion_matrix_calls_combined_inv(combined_tool_results_list[[software]][[clade]], threshold)
     }else{
         combined_tool_results_list[[software]][[clade]] <- add_confusion_matrix_calls_combined(combined_tool_results_list[[software]][[clade]], threshold)
